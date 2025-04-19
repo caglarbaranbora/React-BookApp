@@ -2,7 +2,11 @@ import "./App.css";
 import BookSearch from "./components/BookSearch";
 
 function App() {
-  return <BookSearch />;
+  return (
+    <div className="App">
+      <BookSearch />
+    </div>
+  );
 }
 
 export default App;

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
+import "../styles/BookSearch.css";
+import { FaSearch } from "react-icons/fa";
 
 const BookSearch = () => {
   const [query, setQuery] = useState("");
@@ -18,7 +20,6 @@ const BookSearch = () => {
     }
   };
 
-  // Kitap kapağı URL'sini alacak fonksiyon
   const getCoverUrl = (coverId) => {
     return coverId
       ? `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`
@@ -26,44 +27,45 @@ const BookSearch = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Kitap adı girin"
-      />
-      <button onClick={handleSearch}>Ara</button>
+    <div className="container">
+      <div className="search">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Kitap adı girin"
+        />
+        <button onClick={handleSearch}>
+          <FaSearch />
+        </button>
+      </div>
 
       {loading && <p>Yükleniyor...</p>}
-      {error && <p>Hata: {error.message}</p>}
+      {error && console.log(`Hata: ${error.message}`)}
 
       {data && (
-        <ul>
-          {data.docs.map((book) => (
-            <li key={book.key}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <img
-                  src={getCoverUrl(book.cover_i)}
-                  alt={book.title}
-                  style={{
-                    width: "100px",
-                    height: "150px",
-                    marginRight: "10px",
-                  }}
-                />
-                <div>
-                  <strong>{book.title}</strong> -{" "}
-                  {book.author_name
-                    ? book.author_name.join(", ")
-                    : "Yazar bilgisi yok"}
+        <>
+          <ul>
+            {data.docs.map((book) => (
+              <li key={book.key}>
+                <div className="image-container">
+                  <p className="badge">{book.first_publish_year}</p>
+                  <img src={getCoverUrl(book.cover_i)} alt={book.title} />
+                  <div className="author-container">
+                    <p className="title">{book.title}</p>
+                    <p className="author">
+                      {book.author_name
+                        ? book.author_name.join(", ")
+                        : "Yazar bilgisi yok"}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+          <button onClick={morePage}>Daha Fazla</button>
+        </>
       )}
-      <button onClick={morePage}>Daha Fazla</button>
     </div>
   );
 };

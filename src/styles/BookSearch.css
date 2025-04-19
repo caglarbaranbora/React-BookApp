@@ -1,0 +1,121 @@
+.container {
+  padding: 20px 40px;
+  border: 2px solid limegreen;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.search {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid lime;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+input {
+  border: none;
+  background-color: transparent;
+  font-size: 2em;
+  color: lime;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+li {
+  background-color: #111;
+  border: 1px solid limegreen;
+  border-radius: 15px;
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  border-radius: 15px;
+  padding: 15px;
+  position: relative;
+  background-color: #111;
+}
+
+img {
+  width: 150px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: black;
+  color: lime;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.author-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: lime;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-size: 1.1em;
+  position: relative;
+}
+
+.author::before {
+  content: "Yazar: ";
+  left: -10px;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 8px;
+}
+
+button {
+  color: lime;
+  background-color: transparent;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: 1px solid lime;
+  display: grid;
+}
+
+button:hover {
+  color: white;
+}
